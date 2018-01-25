@@ -1,5 +1,6 @@
 package com.flash.party.datastore.store.impl;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,5 +17,10 @@ public class UserLocationStoreInMemoryImpl implements UserLocationStore {
   @Override
   public void insertOrUpdate(final UserLocation userLocation) {
     userLocationStore.put(userLocation.getUserId(), userLocation);
+  }
+
+  @Override
+  public Collection<UserLocation> getAll() {
+    return userLocationStore.values();
   }
 }
