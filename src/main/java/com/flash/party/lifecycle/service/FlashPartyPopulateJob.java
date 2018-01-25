@@ -1,6 +1,6 @@
 package com.flash.party.lifecycle.service;
 
-public interface FlashPartyPopulateService {
+public interface FlashPartyPopulateJob {
 
   void populate();
 }

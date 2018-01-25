@@ -5,10 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.flash.party.lifecycle.event.events.FlashPartyBasicEvent;
 import com.flash.party.lifecycle.event.eventarchive.FlashPartyEventArchive;
-
-import static java.util.stream.Collectors.toList;
+import com.flash.party.lifecycle.event.events.FlashPartyBasicEvent;
 
 @Repository
 public class FlashPartyEventArchiveImpl implements FlashPartyEventArchive {
@@ -18,11 +16,5 @@ public class FlashPartyEventArchiveImpl implements FlashPartyEventArchive {
   @Override
   public void archive(FlashPartyBasicEvent event) {
     events.add(event);
-  }
-
-  public List<FlashPartyBasicEvent> getEvents(Integer numOfEvents) {
-    return events.stream()
-      .limit(numOfEvents)
-      .collect(toList());
   }
 }

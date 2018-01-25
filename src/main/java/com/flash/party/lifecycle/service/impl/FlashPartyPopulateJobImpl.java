@@ -15,10 +15,10 @@ import com.flash.party.datastore.store.FlashPartyStore;
 import com.flash.party.datastore.store.UserLocationStore;
 import com.flash.party.lifecycle.event.events.FlashPartyCreateEvent;
 import com.flash.party.lifecycle.event.eventstore.FlashPartyEventStore;
-import com.flash.party.lifecycle.service.FlashPartyPopulateService;
+import com.flash.party.lifecycle.service.FlashPartyPopulateJob;
 
 @Component
-public class FlashPartyPopulateServiceImpl implements FlashPartyPopulateService {
+public class FlashPartyPopulateJobImpl implements FlashPartyPopulateJob {
 
   @Autowired
   private UserLocationStore userLocationStore;
@@ -31,7 +31,8 @@ public class FlashPartyPopulateServiceImpl implements FlashPartyPopulateService 
 
   @Override
   @Scheduled(cron = "* 0/10 * * * ?")
-  public void populate() { Map<String, List<String>> possibleParties = new HashMap<>();
+  public void populate() {
+    Map<String, List<String>> possibleParties = new HashMap<>();
     final Set<String> populatedCoordinates = flashPartyStore.getCoordinateKeys();
     userLocationStore.getAll()
       .stream()
@@ -51,13 +52,13 @@ public class FlashPartyPopulateServiceImpl implements FlashPartyPopulateService 
       });
   }
 
-  private List<String> newList(String userId) {
+  private List<String> newList(final String userId) {
     List<String> users = new ArrayList<>();
     users.add(userId);
     return users;
   }
 
-  private void createFlashParty(String coordinateKey, List<String> userIds) {
+  private void createFlashParty(final String coordinateKey, final List<String> userIds) {
     flashPartyStore.addParty(FlashParty.of(coordinateKey, userIds));
     flashPartyEventStore.addEvent(FlashPartyCreateEvent.of(coordinateKey, userIds));
   }

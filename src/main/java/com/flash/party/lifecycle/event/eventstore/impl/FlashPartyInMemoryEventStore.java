@@ -19,7 +19,7 @@ public class FlashPartyInMemoryEventStore implements FlashPartyEventStore {
   private FlashPartyEventArchive eventArchive;
 
   @Override
-  public void addEvent(FlashPartyBasicEvent event) {
+  public void addEvent(final FlashPartyBasicEvent event) {
     eventQueue.add(event);
   }
 

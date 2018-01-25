@@ -25,7 +25,7 @@ public class LocationController {
   @Autowired
   private UserLocationStore userLocationStore;
 
-  @RequestMapping(path = "/api/{userId}",
+  @RequestMapping(path = "/api/v1/{userId}",
     method = POST,
     consumes = APPLICATION_JSON_VALUE,
     produces = APPLICATION_JSON_VALUE)

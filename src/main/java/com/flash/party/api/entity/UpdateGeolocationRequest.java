@@ -14,17 +14,7 @@ public class UpdateGeolocationRequest {
     return timestamp;
   }
 
-  public UpdateGeolocationRequest setTimestamp(final String timestamp) {
-    this.timestamp = timestamp;
-    return this;
-  }
-
   public GeolocationCoordinate getCoordinates() {
     return coordinates;
-  }
-
-  public UpdateGeolocationRequest setCoordinates(final GeolocationCoordinate coordinates) {
-    this.coordinates = coordinates;
-    return this;
   }
 }

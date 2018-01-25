@@ -4,12 +4,13 @@ import java.util.List;
 
 public class FlashParty {
 
-  private String coordinateKey;
-  private List<String> userIds;
-  private boolean deleted;
+  private final String coordinateKey;
+  private final List<String> userIds;
+  private final boolean deleted;
 
   private FlashParty(final String coordinateKey, final List<String> userIds) {
     this.coordinateKey = coordinateKey;
+    this.userIds = userIds;
     this.deleted = false;
   }
 
@@ -25,17 +26,7 @@ public class FlashParty {
     return userIds;
   }
 
-  public FlashParty setUserIds(final List<String> userIds) {
-    this.userIds = userIds;
-    return this;
-  }
-
   public boolean isDeleted() {
     return deleted;
-  }
-
-  public FlashParty setDeleted(final boolean deleted) {
-    this.deleted = deleted;
-    return this;
   }
 }
