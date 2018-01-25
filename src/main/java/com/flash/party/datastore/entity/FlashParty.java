@@ -1,31 +1,32 @@
 package com.flash.party.datastore.entity;
 
+import java.util.List;
+
 public class FlashParty {
 
   private String coordinateKey;
-  private Integer peopleNearBy;
+  private List<String> userIds;
   private boolean deleted;
 
-  private FlashParty(String coordinateKey, Integer peopleNearBy) {
+  private FlashParty(final String coordinateKey, final List<String> userIds) {
     this.coordinateKey = coordinateKey;
-    this.peopleNearBy = peopleNearBy;
     this.deleted = false;
   }
 
-  public FlashParty of(String coordinateKey, Integer peopleNearBy) {
-    return new FlashParty(coordinateKey, peopleNearBy);
+  public static FlashParty of(final String coordinateKey, final List<String> userIds) {
+    return new FlashParty(coordinateKey, userIds);
   }
 
   public String getCoordinateKey() {
     return coordinateKey;
   }
 
-  public Integer getPeopleNearBy() {
-    return peopleNearBy;
+  public List<String> getUserIds() {
+    return userIds;
   }
 
-  public FlashParty setPeopleNearBy(final Integer peopleNearBy) {
-    this.peopleNearBy = peopleNearBy;
+  public FlashParty setUserIds(final List<String> userIds) {
+    this.userIds = userIds;
     return this;
   }
 
